@@ -39,3 +39,36 @@ void merge_sort(int* v,int left,int right){
         merge(v,left,middle,right);
     }
 }
+
+
+#dfs,bfs
+
+const int MAX = 10000;
+bool visited[MAX];
+vector<int> adj[MAX];
+
+void dfs(int u){
+    visited[u]=true;
+    for(int i=0;i<adj[i].size();i++){
+        if(!visited[adj[u][i]]){
+                    dfs(adj[u][i]);
+                    }
+    }
+}
+
+void bfs(int u){
+    queue<int> q;
+    q.push(u);
+    visited[u]=true;
+    
+    while(!q.empty()){
+        int x = q.front();
+        q.pop();
+        for(int i=0;i<adj[x].size();i++){
+            if(!visited[adj[u][i]]){
+                q.push(adj[u][i]);
+                visited[adj[u][i]]=true;
+            }
+        }
+    }
+}
